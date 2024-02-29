@@ -1,0 +1,2 @@
+CREATE TABLE `schedule`.`time_table` (`sub_id` VARCHAR(7) NOT NULL , `sub_activity` VARCHAR(50) NOT NULL , 
+`act_date` DATE NOT NULL , `act_time` TIME NOT NULL , PRIMARY KEY (`sub_id`)) ENGINE = MyISAM;
