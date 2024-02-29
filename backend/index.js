@@ -35,14 +35,37 @@ app.get("/",(req,res)=>{
 })
 
 app.post("/add",(req,res)=>{
-    const sql = "INSERT INTO `time_table`(`sub_id`,`sub_activity`,`act_date`,`act_time`) VALUES ('"+req.body.sub_id+"','"+req.body.sub_activity+"','"+req.body.act_date+"','"+req.body.act_time+"');"
-    db.query(sql,(err,result)=>{
+    if(
+        !req.body.sub_id ||
+        !req.body.sub_activity ||
+        !req.body.act_date ||
+        !req.body.act_time
+    ){
+        return res.send(400).send({
+            message:"Send all reqired data"
+        })
+    }else{
+        const sql = "INSERT INTO `time_table`(`sub_id`,`sub_activity`,`act_date`,`act_time`) VALUES ('"+req.body.sub_id+"','"+req.body.sub_activity+"','"+req.body.act_date+"','"+req.body.act_time+"');"
+        db.query(sql,(err,result)=>{
+            if(err){
+                return res.json(err)
+            }else{
+                return res.json(result)
+            }
+        })
+    }
+})
+
+app.get("/update/:id",(req,res)=>{
+    const sql = "SELECT * FROM `time_table`;"
+    db.query(sql,(err,data)=>{
         if(err){
             return res.json(err)
         }else{
-            return res.json(result)
+            return res.json(data)
         }
     })
+
 })
 
 app.listen(4000,()=>{
