@@ -9,7 +9,7 @@ const Home = () => {
     useEffect(()=>{
         setLoading(true)
         axios
-            .get('http://localhost:4000/')
+            .get('http://localhost:4000/api/')
             .then((res)=>{
                 setData(res.data)
                 setLoading(false)
@@ -34,13 +34,13 @@ const Home = () => {
                         </tr>
                     </thead>
                     
-                    {loading?(<p>loading</p>):(
+                    {loading?console.log("loading"):(
                         <tbody>
                             {data.map((sub,index)=>{
-                                return <tr>
+                                return <tr key={index}>
                                             <td>{sub.sub_id}</td>
                                             <td>{sub.sub_activity}</td>
-                                            <td>{sub.act_date}</td>
+                                            <td>{sub.act_date.split(/[T ]/i, 1)[0]}</td>
                                             <td>{sub.act_time}</td>
                                             <td>
                                                 <Button variant='primary'>
@@ -49,7 +49,7 @@ const Home = () => {
                                             </td>
                                             <td>
                                                 <Button variant='danger'>
-                                                    <Link to={`/edit/${sub.sub_id}`} className='text-white'>Delete</Link>
+                                                    <Link to={`/delete/${sub.sub_id}`} className='text-white'>Delete</Link>
                                                 </Button> 
                                             </td>
                                         </tr>

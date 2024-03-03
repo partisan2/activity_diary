@@ -26,7 +26,7 @@ db.connect((err)=>{
 })
 
 
-app.get("/",(req,res)=>{
+app.get("/api/",(req,res)=>{
     const sql = "SELECT * FROM `time_table`;"
     db.query(sql,(err,data)=>{
         if(err){
@@ -37,7 +37,7 @@ app.get("/",(req,res)=>{
     })
 })
 
-app.get("/:data",(req,res)=>{
+app.get("/api/:data",(req,res)=>{
     const { data } = req.params
     const sql = "SELECT * FROM `time_table` WHERE `sub_id`='"+data+"' OR `sub_activity`='"+data+"';"
     db.query(sql,(err,data)=>{
@@ -50,7 +50,7 @@ app.get("/:data",(req,res)=>{
 })
 
 
-app.post("/add",(req,res)=>{
+app.post("/api/add",(req,res)=>{
     if(
         !req.body.sub_id ||
         !req.body.sub_activity ||
@@ -72,7 +72,7 @@ app.post("/add",(req,res)=>{
     }
 })
 
-app.get("/update/:id",(req,res)=>{
+app.get("/api/update/:id",(req,res)=>{
     const { id } = req.params
     const sql = "SELECT * FROM `time_table` WHERE `sub_id`='"+id+"';"
     db.query(sql,(err,data)=>{
@@ -84,7 +84,7 @@ app.get("/update/:id",(req,res)=>{
     })
 })
 
-app.put("/update",(req,res)=>{
+app.put("/api/update",(req,res)=>{
     if(
         !req.body.sub_id ||
         !req.body.sub_activity ||
@@ -106,7 +106,7 @@ app.put("/update",(req,res)=>{
     }
 })
 
-app.delete("/delete/:id",(req,res)=>{
+app.delete("/api/delete/:id",(req,res)=>{
     const { id } = req.params
     const sql = "DELETE FROM `Time_table` WHERE `sub_id`='"+id+"';"
     db.query(sql,(err,result)=>{
