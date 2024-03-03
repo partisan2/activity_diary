@@ -47,6 +47,10 @@ const Edit = () => {
           alert("An Error Occured")
         })
     }
+
+    const handelCancel = () =>{
+      navigate('/')
+    }
   return (
     <Container fluid>
       <Row>
@@ -81,9 +85,18 @@ const Edit = () => {
                   </Form.Label>
                   <Form.Control type='text' value={loading? "Time":actTime} onChange={(e)=>{setActTime(e.target.value)}}/>
                 </Form.Group>
-                <Button variant="primary" onClick={handleEditData}>
-                  Submit
-                </Button>
+                <Row>
+                  <Col className='d-flex justify-content-center'>
+                    <Button variant="primary" onClick={handleEditData}>
+                      Update
+                    </Button>
+                  </Col>
+                  <Col className='d-flex justify-content-center'>
+                    <Button variant="secondary" onClick={handelCancel}>
+                      Cancel
+                    </Button>
+                  </Col>              
+                </Row>
               </Form>
             </Card.Body>
           </Card>

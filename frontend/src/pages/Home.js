@@ -44,12 +44,12 @@ const Home = () => {
                                             <td>{sub.act_time}</td>
                                             <td>
                                                 <Button variant='primary'>
-                                                    <Link to={`/edit/${sub.sub_id}`} className='text-white'>Update</Link>
+                                                    <Link to={`/edit/${sub.sub_id}`} className='text-white text-decoration-none'>Update</Link>
                                                 </Button> 
                                             </td>
                                             <td>
                                                 <Button variant='danger'>
-                                                    <Link to={`/delete/${sub.sub_id}`} className='text-white'>Delete</Link>
+                                                    <Link to={`/delete/${sub.sub_id}`} className='text-white text-decoration-none'>Delete</Link>
                                                 </Button> 
                                             </td>
                                         </tr>
