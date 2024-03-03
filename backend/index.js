@@ -72,7 +72,7 @@ app.post("/api/add",(req,res)=>{
     }
 })
 
-app.get("/api/update/:id",(req,res)=>{
+app.get("/api/:id",(req,res)=>{
     const { id } = req.params
     const sql = "SELECT * FROM `time_table` WHERE `sub_id`='"+id+"';"
     db.query(sql,(err,data)=>{

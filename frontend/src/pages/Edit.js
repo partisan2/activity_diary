@@ -14,7 +14,7 @@ const Edit = () => {
     useEffect(()=>{
         setLoading(true)
         axios
-            .get(`http://localhost:4000/api/update/${id}`)
+            .get(`http://localhost:4000/api/${id}`)
             .then((res)=>{
                 setSubId(res.data[0].sub_id)
                 setActiity(res.data[0].sub_activity)
