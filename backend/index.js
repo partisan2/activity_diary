@@ -2,6 +2,7 @@ import express from "express"
 import {log} from "node:console"
 import mysql from "mysql"
 import cors from "cors"
+import 'dotenv/config'
 
 const app = express()
 
@@ -11,10 +12,10 @@ app.use(cors())
 
 
 const db = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"",
-    database:"schedule"
+    host:process.env.DB_HOST,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASSWORD,
+    database:process.env.DB_DATABASE
 })
 
 db.connect((err)=>{
@@ -120,6 +121,6 @@ app.delete("/api/delete/:id",(req,res)=>{
 
 
 
-app.listen(4000,()=>{
+app.listen(process.env.PORT || 4000,()=>{
     log("Server Running")
 })
