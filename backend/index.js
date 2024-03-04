@@ -121,6 +121,6 @@ app.delete("/api/delete/:id",(req,res)=>{
 
 
 
-app.listen(process.env.PORT || 4000,()=>{
+app.listen(process.env.PORT || 3306,()=>{
     log("Server Running")
 })
