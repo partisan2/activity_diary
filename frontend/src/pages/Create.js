@@ -20,7 +20,7 @@ const Create = () => {
     }
     setLoading(true)
     axios
-      .post('http://localhost:4000/api/add',data)
+      .post('https://activity-diary.onrender.com/api/add',data)
       .then((res)=>{
         setLoading(false)
         navigate('/')
