@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container,Row,Col, Table, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Navigation from '../components/Navigation'
 
 const Home = () => {
     const [ data,setData ] = useState([])
@@ -19,6 +20,8 @@ const Home = () => {
             })
     },[])
   return (
+    <>
+    <Navigation/>
     <Container fluid>
         <Row className='justify-content-center'>
             <Col xs={12} md={8} lg={10}>
@@ -61,6 +64,7 @@ const Home = () => {
             </Col>
         </Row>
     </Container>
+    </>
   )
 }
 

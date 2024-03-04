@@ -2,6 +2,7 @@ import React,{ useEffect, useState } from 'react'
 import { Button, Card, Col, Row,Form,Container } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import Navigation from '../components/Navigation'
 
 const Delete = () => {
   const [ subId,setSubId ] = useState('')
@@ -26,11 +27,25 @@ const Delete = () => {
                 console.log(err)
             })
     },[id])
+const handelDelete = () =>{
+  setLoading(true)
+  axios
+    .delete(`http://localhost:4000/api/delete/${id}`)
+    .then((res)=>{
+      setLoading(false)
+      navigate('/')
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+}
   return (
+    <>
+    <Navigation/>
     <Container fluid>
     <Row>
       <Col xs={12} className='d-flex justify-content-center'>
-        <Card style={{maxWidth:"24rem"}}>
+        <Card style={{maxWidth:"24rem"}} className='mt-5'>
           <Card.Header>
             Delete
           </Card.Header>
@@ -62,12 +77,12 @@ const Delete = () => {
               </Form.Group>
               <Row>
                 <Col className='d-flex justify-content-center'>
-                  <Button variant="danger" >
+                  <Button variant="danger" onClick={handelDelete} >
                     Delete
                   </Button>
                 </Col>
                 <Col className='d-flex justify-content-center'>
-                  <Button variant="secondary" >
+                  <Button variant="secondary" onClick={()=>{navigate('/')}}>
                     Cancel
                   </Button>
                 </Col>
@@ -78,6 +93,7 @@ const Delete = () => {
       </Col>
     </Row>
   </Container>
+  </>
   )
 }
 

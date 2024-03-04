@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, Col, Container,Form,Row,Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import Navigation from '../components/Navigation'
 
 const Edit = () => {
   const [ subId,setSubId ] = useState('')
@@ -25,7 +26,7 @@ const Edit = () => {
             .catch((err)=>{
                 console.log(err)
             })
-    },[id])
+    },[id]) 
 
     const handleEditData = () =>{
       const data = {
@@ -52,10 +53,12 @@ const Edit = () => {
       navigate('/')
     }
   return (
+    <>
+    <Navigation/>
     <Container fluid>
       <Row>
         <Col xs={12} className='d-flex justify-content-center'>
-          <Card style={{maxWidth:"24rem"}}>
+          <Card style={{maxWidth:"24rem"}} className='mt-5'>
             <Card.Header>
               Update
             </Card.Header>
@@ -103,6 +106,7 @@ const Edit = () => {
         </Col>
       </Row>
     </Container>
+  </>
   )
 }
 
