@@ -9,7 +9,6 @@ const Create = () => {
   const [ activity,setActiity ] = useState('')
   const [ actDate,setActDate ] = useState('')
   const [ actTime,setActTime ] = useState('')
-  const [ loading,setLoading ] = useState(false)
   const navigate = useNavigate()
   const handleUpdate = () =>{
     const data = {
@@ -18,11 +17,9 @@ const Create = () => {
       "act_date":actDate,
       "act_time":actTime
     }
-    setLoading(true)
     axios
       .post('https://activity-diary.onrender.com/api/add',data)
       .then((res)=>{
-        setLoading(false)
         navigate('/')
       })
       .catch((err)=>{
