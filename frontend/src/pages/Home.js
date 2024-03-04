@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container,Row,Col, Table, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Navigation from '../components/Navigation'
 
 const Home = () => {
     const [ data,setData ] = useState([])
@@ -9,7 +10,7 @@ const Home = () => {
     useEffect(()=>{
         setLoading(true)
         axios
-            .get('http://localhost:4000/')
+            .get('http://localhost:4000/api/')
             .then((res)=>{
                 setData(res.data)
                 setLoading(false)
@@ -19,6 +20,8 @@ const Home = () => {
             })
     },[])
   return (
+    <>
+    <Navigation/>
     <Container fluid>
         <Row className='justify-content-center'>
             <Col xs={12} md={8} lg={10}>
@@ -34,22 +37,22 @@ const Home = () => {
                         </tr>
                     </thead>
                     
-                    {loading?(<p>loading</p>):(
+                    {loading?console.log("loading"):(
                         <tbody>
                             {data.map((sub,index)=>{
-                                return <tr>
+                                return <tr key={index}>
                                             <td>{sub.sub_id}</td>
                                             <td>{sub.sub_activity}</td>
-                                            <td>{sub.act_date}</td>
+                                            <td>{sub.act_date.split(/[T ]/i, 1)[0]}</td>
                                             <td>{sub.act_time}</td>
                                             <td>
                                                 <Button variant='primary'>
-                                                    <Link to={`/edit/${sub.sub_id}`} className='text-white'>Update</Link>
+                                                    <Link to={`/edit/${sub.sub_id}`} className='text-white text-decoration-none'>Update</Link>
                                                 </Button> 
                                             </td>
                                             <td>
                                                 <Button variant='danger'>
-                                                    <Link to={`/edit/${sub.sub_id}`} className='text-white'>Delete</Link>
+                                                    <Link to={`/delete/${sub.sub_id}`} className='text-white text-decoration-none'>Delete</Link>
                                                 </Button> 
                                             </td>
                                         </tr>
@@ -61,6 +64,7 @@ const Home = () => {
             </Col>
         </Row>
     </Container>
+    </>
   )
 }
 
