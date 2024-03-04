@@ -15,7 +15,7 @@ const Edit = () => {
     useEffect(()=>{
         setLoading(true)
         axios
-            .get(`http://localhost:4000/api/${id}`)
+            .get(`https://activity-diary.onrender.com/api/${id}`)
             .then((res)=>{
                 setSubId(res.data[0].sub_id)
                 setActiity(res.data[0].sub_activity)
@@ -37,7 +37,7 @@ const Edit = () => {
       }
       setLoading(true)
       axios
-        .put(`http://localhost:4000/api/update`,data)
+        .put(`https://activity-diary.onrender.com/api/update`,data)
         .then(()=>{
           setLoading(false)
           navigate('/')

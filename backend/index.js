@@ -96,7 +96,7 @@ app.put("/api/update",(req,res)=>{
             message:"Send all required data"
         })
     }else{
-        const sql = "UPDATE `Time_table` SET `sub_id`='"+req.body.sub_id+"',`sub_activity`='"+req.body.sub_activity+"',`act_date`='"+req.body.act_date+"',`act_time`='"+req.body.act_time+"' WHERE `sub_id`='"+req.body.sub_id+"';"
+        const sql = "UPDATE `time_table` SET `sub_id`='"+req.body.sub_id+"',`sub_activity`='"+req.body.sub_activity+"',`act_date`='"+req.body.act_date+"',`act_time`='"+req.body.act_time+"' WHERE `sub_id`='"+req.body.sub_id+"';"
         db.query(sql,(err,result)=>{
             if(err){
                 return res.json(err)
@@ -109,7 +109,7 @@ app.put("/api/update",(req,res)=>{
 
 app.delete("/api/delete/:id",(req,res)=>{
     const { id } = req.params
-    const sql = "DELETE FROM `Time_table` WHERE `sub_id`='"+id+"';"
+    const sql = "DELETE FROM `time_table` WHERE `sub_id`='"+id+"';"
     db.query(sql,(err,result)=>{
         if(err){
             return res.json(err)

@@ -15,7 +15,7 @@ const Delete = () => {
     useEffect(()=>{
         setLoading(true)
         axios
-            .get(`http://localhost:4000/api/${id}`)
+            .get(`https://activity-diary.onrender.com/api/${id}`)
             .then((res)=>{
                 setSubId(res.data[0].sub_id)
                 setActiity(res.data[0].sub_activity)
@@ -30,7 +30,7 @@ const Delete = () => {
 const handelDelete = () =>{
   setLoading(true)
   axios
-    .delete(`http://localhost:4000/api/delete/${id}`)
+    .delete(`https://activity-diary.onrender.com/api/delete/${id}`)
     .then((res)=>{
       setLoading(false)
       navigate('/')

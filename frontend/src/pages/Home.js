@@ -10,7 +10,7 @@ const Home = () => {
     useEffect(()=>{
         setLoading(true)
         axios
-            .get('http://localhost:4000/api/')
+            .get(`https://activity-diary.onrender.com/api/`)
             .then((res)=>{
                 setData(res.data)
                 setLoading(false)
